@@ -45,9 +45,11 @@ class LinkedList:
             self.head = new_node
         else:
             current = self.head
-            while current.get_next() is not None:
-                current = current.get_next()
-            current.set_next(new_node)
+            # while current.get_next() is not None:
+            #     current = current.get_next()
+            self.head = new_node
+            new_node.set_next(current)
+            # current.set_next(new_node)
 
     def pop(self):
         # if list is 2 or more
@@ -57,13 +59,13 @@ class LinkedList:
                 current = current.get_next()
             removed = current.get_next().value
             current.set_next(None)
-            print("removed: ", removed) 
+            print("dequeue: ", removed) 
             return removed
         # if list is only 1
         if self.head is not None:
             current = self.head.get_value()
             self.head = None
-            print("removed: ", current)
+            print("dequeue: ", current)
             return current
             
             
